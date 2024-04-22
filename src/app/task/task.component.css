@@ -1,0 +1,11 @@
+mat-card {
+  padding:12px;
+}
+:host {
+  display: block;
+}
+
+.item {
+  margin-bottom: 10px;
+  cursor: pointer;
+}

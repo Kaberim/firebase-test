@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kbfire-7d81d": {
+      "hosting": {
+        "kanban-fire": [
+          "kbfire-7d81d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kbfire-7d81d"
+  }
+}
