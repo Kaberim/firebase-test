@@ -14,6 +14,7 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from "../enviroments/enviroment";
 import { AngularFirestore, AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { Observable } from "rxjs";
+import { SocialLoginModule } from "angularx-social-login";
 
 // @ts-ignore
 @Component({
@@ -28,7 +29,8 @@ import { Observable } from "rxjs";
     DragDropModule,
     MatButton,
     AngularFirestoreModule,
-    AsyncPipe
+    AsyncPipe,
+    SocialLoginModule
   ],
   selector: 'app-root',
   standalone: true,
@@ -39,20 +41,7 @@ export class AppComponent {
   todo = this.store.collection('todo').valueChanges({ idField: 'id' }) as Observable<Task[]>;
   inProgress = this.store.collection('inProgress').valueChanges({ idField: 'id' }) as Observable<Task[]>;
   done = this.store.collection('done').valueChanges({ idField: 'id' }) as Observable<Task[]>;
-  // todo: Task[] = [
-  //
-  //   {
-  //     title: 'Buy milk',
-  //     description: 'Go to the store and buy milk'
-  //   },
-  //   {
-  //     title: 'Create a Kanban app',
-  //     description: 'Using Firebase and Angular create a Kanban app!'
-  //   }
-  // ];
   title = 'kanban-fire';
-  // inProgress: Task[] = [];
-  // done: Task[] = [];
 
   constructor(private dialog: MatDialog, private store: AngularFirestore) {
 
