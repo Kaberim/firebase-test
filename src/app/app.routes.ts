@@ -1,12 +1,9 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from "./login/login.component";
-import { MainPageComponent } from "./main-page/main-page.component";
+import { KbComponent } from "./kb/kb.component";
 
 export const routes: Routes =
   [
     {path: 'login', component: LoginComponent},
-    {path: 'mainpage', component: MainPageComponent
-    //   // , canActivate: [AuthGuardService]
-    },
-    {path: '**', component: LoginComponent}
+    {path: '**', component: KbComponent}
   ];

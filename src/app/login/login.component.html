@@ -1,53 +1,17 @@
 <mat-card>
   <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input matInput type="email">
-    </mat-form-field>
+<!--  <mat-card-content>-->
+<!--&lt;!&ndash;    <mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;      <mat-label>Email</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;      <input matInput type="email">&ndash;&gt;-->
+<!--&lt;!&ndash;    </mat-form-field>&ndash;&gt;-->
 
-    <mat-form-field>
-      <mat-label>Password</mat-label>
-      <input matInput type="password">
-    </mat-form-field>
-
-  </mat-card-content>
+<!--&lt;!&ndash;    <mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;      <mat-label>Password</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;      <input matInput type="password">&ndash;&gt;-->
+<!--&lt;!&ndash;    </mat-form-field>&ndash;&gt;-->
+<!--  </mat-card-content>-->
   <mat-card-actions>
-    <div>
-      <button mat-raised-button>Login</button>
-      <button mat-raised-button (click)="logout()">Logout</button>
-
-<!--      <button (click)="loginWithGoogle()" mat-raised-button class="google-login-btn">Google</button>-->
-<!--      <button (click)="loginWithGoogle()">Sign in with Google</button>-->
-<!--      <div class="" id="google-button"></div>-->
-      <!--      <asl-google-signin-button></asl-google-signin-button>-->
-<!--      <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button>-->
-      <div id="g_id_onload"
-           data-client_id="329374168238-fdu56g6dnhqccbmi8r834ukt17j1kaop.apps.googleusercontent.com"
-           data-context="signin"
-           data-ux_mode="popup"
-           data-itp_support="true"
-           data-callback="handleCredentialResponse()"
-      >
-      </div>
-
-      <div class="g_id_signin"
-           data-type="standard"
-           data-shape="rectangular"
-           data-theme="outline"
-           data-text="signin_with"
-           data-size="large"
-           data-logo_alignment="left">
-      </div>
-    </div>
+      <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button>
   </mat-card-actions>
 </mat-card>
-
-
-<div *ngIf="socialAuthService.authState | async as socialUser">
-  <p>Hello, {{socialUser.name}}!</p>
-  <br>
-  <p>Your email: {{socialUser.email}}</p>
-  <br>
-  <button mat-raised-button (click)="logout()">Logout</button>
-</div>

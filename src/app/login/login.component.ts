@@ -4,8 +4,9 @@ import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatInput } from "@angular/material/input";
 import { MatButton } from "@angular/material/button";
 import { Router } from "@angular/router";
-import { SocialAuthService } from "angularx-social-login";
+import { GoogleLoginProvider, SocialAuthService } from "angularx-social-login";
 import { AsyncPipe, NgIf } from "@angular/common";
+import { GoogleSigninButtonDirective, GoogleSigninButtonModule } from "@abacritt/angularx-social-login";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ import { AsyncPipe, NgIf } from "@angular/common";
     MatButton,
     MatLabel,
     AsyncPipe,
-    NgIf
+    NgIf,
+    GoogleSigninButtonModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -43,18 +45,9 @@ export class LoginComponent implements OnInit{
     );
     // @ts-ignore
     google.accounts.id.prompt((notification: PromptMomentNotification) => {});
-
-    this.socialAuthService.authState.subscribe((user) => {
-      console.log(user)
-      //perform further logics
-    });
   }
 
-  constructor(private router: Router,
-              public socialAuthService: SocialAuthService) {
-  }
-  logout(): void {
-    this.socialAuthService.signOut().then(() => this.router.navigate(['login']));
+  constructor(private router: Router) {
   }
 
   decodeJWTToken(token:any){
@@ -64,6 +57,5 @@ export class LoginComponent implements OnInit{
     const responsePayload = this.decodeJWTToken(response.credential)
     console.log(responsePayload)
     sessionStorage.setItem('loggedinUser',JSON.stringify(responsePayload))
-    // window.location('/your-desired-place')
   }
 }
