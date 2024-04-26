@@ -1,0 +1,35 @@
+<header class="sticky top-0 bg-dark z-10">
+  <div class="flex items-center justify-between h-16">
+    <div class="ml-4 text-lg font-semibold text-gold">
+      BUILD / ASSISTANT
+    </div>
+    <div>
+      <button class="text-white" routerLink="login">Sign in with google to save your data</button>
+    </div>
+  </div>
+</header>
+
+<div
+  class="fixed inset-y-0 flex flex-row w-screen xl:flex-col left-0 h-24 xl:h-screen overflow-x-auto xl:w-24 xl:overflow-y-auto top-20"
+  *ngIf="characters|async as characters">
+
+  @for (character of activeCharacters|async; track character.id) {
+  <app-character-card [character]="character" [active]="true" (selected)="onCharacterChange($event)" ></app-character-card>
+  }
+
+  @for (character of characters; track character.id) {
+  <app-character-card *ngIf="!this.active.includes(character.id)" [character]="character" (selected)="onCharacterChange($event)"></app-character-card>
+  } @empty {
+  Empty list of users
+  }
+</div>
+<div *ngIf="selected" class="w-screen xl:w-[calc(100%-6rem)] mt-24 xl:mt-0 xl:ml-24 flex flex-col p-4">
+  <div class="flex flex-row mb-8">
+
+    <input type="checkbox" [(ngModel)]="this.checked" (ngModelChange)="updateActive($event)">
+    <label class="text-white ml-4">I am building this character</label>
+  </div>
+  <h1 class="text-white">{{selected.name.toUpperCase()}}</h1>
+
+  <h3 class="text-white">{{selected.path}} | {{selected.element}}</h3>
+</div>

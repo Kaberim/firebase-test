@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 import { MatCard, MatCardAvatar, MatCardHeader, MatCardSubtitle, MatCardTitle } from "@angular/material/card";
-import { NgIf } from "@angular/common";
+import { NgClass, NgIf } from "@angular/common";
 import { Character } from "../data/character";
 
 @Component({
@@ -12,13 +12,24 @@ import { Character } from "../data/character";
     MatCardHeader,
     MatCardSubtitle,
     MatCardTitle,
-    MatCardAvatar
+    MatCardAvatar,
+    NgClass
   ],
   templateUrl: './character-card.component.html',
   styleUrl: './character-card.component.css'
 })
-export class CharacterCardComponent{
+export class CharacterCardComponent implements OnInit{
   @Input() character!: Character;
   @Input() pictureUrl?: string;
   @Input() active: boolean = false;
+  @Output() selected: EventEmitter<Character> = new EventEmitter<Character>()
+
+  ngOnInit() {
+    // console.log(this.character)
+  }
+
+  emitClick(){
+    this.selected.emit(this.character);
+  }
+
 }

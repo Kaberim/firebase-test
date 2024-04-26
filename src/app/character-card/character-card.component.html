@@ -1,7 +1,6 @@
-<mat-card class="character-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{character.name}}</mat-card-title>
-    <mat-card-subtitle>{{character.element.toUpperCase()}} | {{character.path.toUpperCase()}}</mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
+<div
+  (click)="emitClick()"
+  [style.background-image]="'url(' + character.img + ')'"
+  class="w-20 h-20 z-10 rounded-full bg-cover"
+  [ngClass] = "{'after:w-20 after:h-20 after:rounded-full after:bg-opacity-50 after:bg-dark after:absolute after:z-20': !active}"
+></div>

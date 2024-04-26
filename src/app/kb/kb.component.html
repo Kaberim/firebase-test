@@ -59,11 +59,3 @@
     </div>
   </div>
 </div>
-
-<div class="bar" *ngIf="characters|async as characters">
-  @for (character of characters; track character.id) {
-  <app-character-card [character]="character" ></app-character-card>
-  } @empty {
-  Empty list of users
-  }
-</div>
