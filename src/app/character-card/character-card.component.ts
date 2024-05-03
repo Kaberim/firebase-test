@@ -18,18 +18,12 @@ import { Character } from "../data/character";
   templateUrl: './character-card.component.html',
   styleUrl: './character-card.component.css'
 })
-export class CharacterCardComponent implements OnInit{
+export class CharacterCardComponent {
   @Input() character!: Character;
   @Input() pictureUrl?: string;
   @Input() active: boolean = false;
   @Output() selected: EventEmitter<Character> = new EventEmitter<Character>()
-
-  ngOnInit() {
-    // console.log(this.character)
-  }
-
   emitClick(){
     this.selected.emit(this.character);
   }
-
 }

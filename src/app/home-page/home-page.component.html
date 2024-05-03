@@ -4,7 +4,11 @@
       BUILD / ASSISTANT
     </div>
     <div>
-      <button class="text-white" routerLink="login">Sign in with google to save your data</button>
+      <button *ngIf="!auth.isUserLoggedIn(); else logout" class="text-white" routerLink="login">Sign in with google to save your data</button>
+      <ng-template #logout>
+        <button  class="text-white" (click)="auth.logout()">Log out</button>
+      </ng-template>
+
     </div>
   </div>
 </header>

@@ -18,7 +18,10 @@ export const appConfig: ApplicationConfig = {
         autoLogin: true,
         providers: [
           {
-            id: GoogleLoginProvider.PROVIDER_ID
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '329374168238-fdu56g6dnhqccbmi8r834ukt17j1kaop.apps.googleusercontent.com'
+            )
           }
         ],
         onError: (error: any) => {

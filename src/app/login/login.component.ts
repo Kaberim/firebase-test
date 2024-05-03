@@ -7,7 +7,9 @@ import { Router } from "@angular/router";
 import { GoogleLoginProvider, SocialAuthService } from "angularx-social-login";
 import { AsyncPipe, NgIf } from "@angular/common";
 import { GoogleSigninButtonDirective, GoogleSigninButtonModule } from "@abacritt/angularx-social-login";
-import { AuthService } from "../services/auth.service";
+import { AuthService, User } from "../services/auth.service";
+import { userData } from "../data/user-data";
+import { FirebaseService } from "../services/firebase.service";
 
 @Component({
   selector: 'app-login',
@@ -48,7 +50,7 @@ export class LoginComponent implements OnInit{
     google.accounts.id.prompt((notification: PromptMomentNotification) => {});
   }
 
-  constructor(private router: Router, private auth: AuthService) {
+  constructor(private router: Router, private auth: AuthService, private fbStore:FirebaseService) {
   }
 
   decodeJWTToken(token:any){
@@ -58,6 +60,8 @@ export class LoginComponent implements OnInit{
     const responsePayload = this.decodeJWTToken(response.credential)
     console.log(responsePayload)
     sessionStorage.setItem('loggedinUser',JSON.stringify(responsePayload))
-    // this.auth.login()
+
+    this.auth.login(responsePayload as User)
+    this.router.navigate([''])
   }
 }
