@@ -1,0 +1,76 @@
+<div class="w-screen xl:w-[calc(100%-6rem)] mt-24 xl:mt-0 xl:ml-24 flex flex-col p-4">
+    <div class="flex flex-row mb-8">
+        <input type="checkbox" [(ngModel)]="checked" (ngModelChange)="onUpdateActive($event)">
+        <label class="text-white ml-4">I am building this character</label>
+    </div>
+    <h1 class="text-white">{{selected?.name?.toUpperCase()}}</h1>
+    <h3 class="text-white">{{selected?.path}} | {{selected?.element}}</h3>
+
+<!--    <form [formGroup]="relicForm">-->
+<!--        <div class="flex flex-col mb-4">-->
+<!--            <div formControlName="head">-->
+<!--                <label class="text-white mb-2" for="head">Head</label>-->
+<!--                <select id="head" formControlName="setId" class="p-2 rounded">-->
+<!--                    <option *ngFor="let relic of relics | async" [value]="relic.id">{{ relic.name }}</option>-->
+<!--                </select>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--        <div class="flex flex-col mb-4">-->
+<!--            <label class="text-white mb-2" for="body">Body</label>-->
+<!--            <select id="body" formControlName="body" class="p-2 rounded">-->
+<!--                <option *ngFor="let relic of relics | async" [value]="relic.id">{{ relic.name }}</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="flex flex-col mb-4">-->
+<!--            <label class="text-white mb-2" for="feet">Feet</label>-->
+<!--            <select id="feet" formControlName="feet" class="p-2 rounded">-->
+<!--                <option *ngFor="let relic of relics | async" [value]="relic.id">{{ relic.name }}</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="flex flex-col mb-4">-->
+<!--            <label class="text-white mb-2" for="arms">Arms</label>-->
+<!--            <select id="arms" formControlName="arms" class="p-2 rounded">-->
+<!--                <option *ngFor="let relic of relics | async" [value]="relic.id">{{ relic.name }}</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="flex flex-col mb-4">-->
+<!--            <label class="text-white mb-2" for="orb">Orb</label>-->
+<!--            <select id="orb" formControlName="orb" class="p-2 rounded">-->
+<!--                <option *ngFor="let relic of relics | async" [value]="relic.id">{{ relic.name }}</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <div class="flex flex-col mb-4">-->
+<!--            <label class="text-white mb-2" for="rope">Rope</label>-->
+<!--            <select id="rope" formControlName="rope" class="p-2 rounded">-->
+<!--                <option *ngFor="let relic of relics | async" [value]="relic.id">{{ relic.name }}</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--    </form>-->
+    <form [formGroup]="relicForm">
+        <div formGroupName="head" class="mb-4">
+            <label class="text-white mr-2" for="setId_head">Head</label>
+            <select id="setId_head" formControlName="setId" class="p-2 rounded">
+                <option *ngFor="let relic of relics | async" [value]="relic.id">{{ relic.name }}</option>
+            </select>
+        </div>
+        <div formGroupName="arms" class="mb-4">
+            <label class="text-white mr-2" for="setId_arms">Arms</label>
+            <select id="setId_arms" formControlName="setId" class="p-2 rounded">
+                <option *ngFor="let relic of relics | async" [value]="relic.id">{{ relic.name }}</option>
+            </select>
+        </div>
+        <div formGroupName="body" class="mb-4">
+            <label class="text-white mr-2" for="setId_body">Body</label>
+            <select id="setId_body" formControlName="setId" class="p-2 rounded">
+                <option *ngFor="let relic of relics | async" [value]="relic.id">{{ relic.name }}</option>
+            </select>
+        </div>
+        <div formGroupName="feet" class="mb-4">
+            <label class="text-white mr-2" for="setId_feet">Feet</label>
+            <select id="setId_feet" formControlName="setId" class="p-2 rounded">
+                <option *ngFor="let relic of relics | async" [value]="relic.id">{{ relic.name }}</option>
+            </select>
+        </div>
+    </form>
+</div>

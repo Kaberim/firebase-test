@@ -27,13 +27,12 @@
   Empty list of users
   }
 </div>
-<div *ngIf="selected" class="w-screen xl:w-[calc(100%-6rem)] mt-24 xl:mt-0 xl:ml-24 flex flex-col p-4">
-  <div class="flex flex-row mb-8">
+<app-character-details
+  *ngIf="selected"
+  [selected]="selected"
+  [checked]="checked"
+  [relicsData]="relicsData"
+  (formValuesChange)="updateKits($event)"
+  (updateActive)="updateActive($event)">
 
-    <input type="checkbox" [(ngModel)]="this.checked" (ngModelChange)="updateActive($event)">
-    <label class="text-white ml-4">I am building this character</label>
-  </div>
-  <h1 class="text-white">{{selected.name.toUpperCase()}}</h1>
-
-  <h3 class="text-white">{{selected.path}} | {{selected.element}}</h3>
-</div>
+</app-character-details>

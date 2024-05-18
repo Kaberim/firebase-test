@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { flatMap, tap } from "rxjs";
-import { userData } from "../data/user-data";
+import {Injectable} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {userData} from "../data/user-data";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +18,7 @@ export class FirebaseService {
   getDocument<T>(collectionName: string, id: string) {
     return this.firestore.doc<T>(`${collectionName}/${id}`);
   }
+
   //
   // setData(collectionName: string, key: string, value: any){
   //   return this.firestore.doc().set()
@@ -39,7 +39,7 @@ export class FirebaseService {
     return this.firestore.doc(`${collectionName}/${id}`).delete();
   }
 
-  getUserData(email:any){
+  getUserData(email: any) {
     return this.firestore.collection<userData>('userData', ref => ref.where('email', '==', email).limit(1))
   }
 
