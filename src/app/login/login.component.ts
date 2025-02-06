@@ -29,6 +29,7 @@ import {AuthService, User} from "../services/auth.service";
 })
 export class LoginComponent implements OnInit {
     ngOnInit() {
+        //Wywołanie logowania Google
         //@ts-ignore
         google.accounts.id.initialize({
             client_id: "329374168238-fdu56g6dnhqccbmi8r834ukt17j1kaop.apps.googleusercontent.com",
@@ -60,6 +61,7 @@ export class LoginComponent implements OnInit {
 
     async handleCredentialResponse(response: any) {
         const responsePayload = this.decodeJWTToken(response.credential)
+        //zapis obecnego użytkownika
         sessionStorage.setItem('loggedinUser', JSON.stringify(responsePayload))
 
         this.auth.login(responsePayload as User)

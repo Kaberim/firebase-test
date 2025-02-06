@@ -1,38 +1,43 @@
 <header class="sticky top-0 bg-dark z-10">
-  <div class="flex items-center justify-between h-16">
-    <div class="ml-4 text-lg font-semibold text-gold">
-      BUILD / ASSISTANT
-    </div>
-    <div>
-      <button *ngIf="!auth.isUserLoggedIn(); else logout" class="text-white" routerLink="login">Sign in with google to save your data</button>
-      <ng-template #logout>
-        <button  class="text-white" (click)="auth.logout()">Log out</button>
-      </ng-template>
+    <div class="flex items-center justify-between h-16">
+        <div class="ml-4 text-lg font-semibold text-gold">
+            BUILD / ASSISTANT
+        </div>
+        <div>
+            <div class="text-white">Last saved: {{ this.lastSaved }}</div>
+            <button *ngIf="!auth.isUserLoggedIn(); else logout" class="text-white" routerLink="login">Sign in with
+                google to save your data
+            </button>
+            <ng-template #logout>
+                <button class="text-white" (click)="auth.logout()">Log out</button>
+            </ng-template>
 
+        </div>
     </div>
-  </div>
 </header>
 
 <div
-  class="fixed inset-y-0 flex flex-row w-screen xl:flex-col left-0 h-24 xl:h-screen overflow-x-auto xl:w-24 xl:overflow-y-auto top-20"
-  *ngIf="characters|async as characters">
+        class="fixed bg-dark inset-y-0 flex flex-row w-screen xl:flex-col left-0 h-24 xl:h-screen overflow-x-auto xl:w-24 xl:overflow-y-auto !top-16"
+        *ngIf="characters|async as characters">
 
-  @for (character of activeCharacters|async; track character.id) {
-  <app-character-card [character]="character" [active]="true" (selected)="onCharacterChange($event)" ></app-character-card>
-  }
+    @for (character of activeCharacters|async; track character.id) {
+        <app-character-card [character]="character" [active]="true"
+                            (selected)="onCharacterChange($event)"></app-character-card>
+    }
 
-  @for (character of characters; track character.id) {
-  <app-character-card *ngIf="!this.active.includes(character.id)" [character]="character" (selected)="onCharacterChange($event)"></app-character-card>
-  } @empty {
-  Empty list of users
-  }
+    @for (character of characters; track character.id) {
+        <app-character-card *ngIf="!this.active.includes(character.id)" [character]="character"
+                            (selected)="onCharacterChange($event)"></app-character-card>
+    } @empty {
+        Empty list of users
+    }
 </div>
 <app-character-details
-  *ngIf="selected"
-  [selected]="selected"
-  [checked]="checked"
-  [relicsData]="relicsData"
-  (formValuesChange)="updateKits($event)"
-  (updateActive)="updateActive($event)">
+        *ngIf="selected"
+        [selected]="selected"
+        [checked]="checked"
+        [relicsData]="relicsData"
+        (formValuesChange)="updateKits($event)"
+        (updateActive)="updateActive($event)">
 
 </app-character-details>
